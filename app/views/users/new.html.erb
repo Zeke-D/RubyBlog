@@ -1,0 +1,7 @@
+<h1>Sign Up</h1>
+<% if defined? session[:user] %>
+	<p> You are already signed in as <%= session[:user]["username"] %>. </p>
+<% else %>
+	<%= link_to 'Sign In', signin_path %>
+	<%= render 'form' %>
+<% end %>

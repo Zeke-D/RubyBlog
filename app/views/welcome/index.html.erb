@@ -1,0 +1,5 @@
+<h1>Hello, Rails!</h1>
+<% if session[:user] != nil %>
+	<%= User.find(session[:user]['id']).standard? %>
+<% end %>
+<%= link_to 'My Blog', controller: 'articles' %>

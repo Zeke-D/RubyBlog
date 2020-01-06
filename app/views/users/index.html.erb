@@ -1,0 +1,16 @@
+<h1>Index for users...</h1>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Username</th>
+    <th></th>
+  </tr>
+ 
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= user.name %></td>
+      <td><%= user.username %></td>
+      <td><%= link_to 'Show', user_path(user) %></td>
+    </tr>
+  <% end %>
+</table>

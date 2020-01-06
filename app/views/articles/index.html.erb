@@ -1,0 +1,31 @@
+<h1>Listing Articles</h1>
+
+<% if @user != nil %>
+	<h2>Welcome, <%= @user["name"] %></h2>
+<% else %>
+	<%= link_to 'Register', new_user_path %>
+	<%= link_to 'Sign In', new_user_path %>
+<% end %>
+ 
+<% if @user != nil %>
+	<%= link_to 'New Article', new_article_path %>
+<% end %>
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Text</th>
+    <th></th>
+  </tr>
+ 
+  <% @articles.each do |article| %>
+    <tr>
+      <td><%= article.title %></td>
+      <td><%= article.text %></td>
+      <td><%= link_to 'Show', article_path(article) %></td>
+	  <% if can? :manage, article %>
+      	<td><%= link_to 'Edit', edit_article_path(article) %></td>
+      	<td><%= link_to 'Delete', article_path(article), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	  <% end %>
+    </tr>
+  <% end %>
+</table>
